@@ -9,6 +9,7 @@ public class Hero {
         if (o == null || getClass() != o.getClass()) return false;
         Hero hero = (Hero) o;
         return age == hero.age &&
+                id == hero.id &&
                 Objects.equals(name, hero.name) &&
                 Objects.equals(power, hero.power) &&
                 Objects.equals(weakness, hero.weakness);
@@ -16,13 +17,14 @@ public class Hero {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, age, power, weakness);
+        return Objects.hash(name, age, power, weakness, id);
     }
 
     private String name;
     private int age;
     private String power;
     private String weakness;
+    private int id;
 
 
     public Hero(String name,int age,String power, String weakness){
@@ -36,6 +38,10 @@ public class Hero {
         return name;
     }
 
+    public void setId( int id){
+        this.id = id;
+    }
+
     public int getAge(){
         return age;
     }
@@ -44,6 +50,10 @@ public class Hero {
     };
     public String getWeakness(){
         return weakness;
+    }
+
+    public int getId(){
+        return id;
     }
 
 }

@@ -1,9 +1,9 @@
 SET MODE PostgreSQL;
 
-CREATE TABLE IF NOT EXISTS tasks (
+CREATE TABLE IF NOT EXISTS heros (
   id int PRIMARY KEY auto_increment,
   name VARCHAR,
-  age int,
+  age integer NOT NULL ,
   power VARCHAR,
   weakness VARCHAR
 );

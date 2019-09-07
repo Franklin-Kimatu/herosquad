@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{#block "title"}}Blog{{/block}}</title>
+
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+</head>
+<body>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="/">Home</a></li>
+    <li role="presentation"><a href="/tasks/new">Add a New Hero</a></li>
+</ul>
+<div class="container">
+    <!--begin main template-->
+    <div class="page-header">
+        <img src="/images/rawpixel-com-296621.jpg" width="70%" alt="https://unsplash.com/search/task?photo=Lh_bn9SgRSY">
+        <h1>Superman ></h1>
+    </div>
+
+    <div class="col-md-12">
+        {{#block "content"}}
+        {{/block}}
+
+    </div>
+</div>
+<!--end main template-->
+{{#block "footer"}}
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted"><a href="/tasks/delete">DELETE ALL HEROS</a></p>
+        </div>
+    </footer>
+    </body>
+    </html>
+{{/block}}

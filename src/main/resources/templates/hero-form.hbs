@@ -1,0 +1,32 @@
+{{#partial "content"}}
+    {{#if editHero}}
+        <h1>Edit Hero characteristics</h1>
+        <form action="/heros/{{editHero.id}}" method="post">
+            <label for ="name"></label>
+                <input id ="name" name="name" type="text">
+            <label for ="age">Hero Age</label>
+                <input id="age" name="age" type="text">
+            <label for="power">Hero's powers</label>
+                <input type="text" name="power" id="power">
+            <label for ="weakness">Heros Weakness</label>
+                <input type="text" id="weakness" name="weakness">
+    {{else}}
+        <h1>Add a new Hero</h1>
+
+        <form action ="/heros" method="post">
+            <label for="name">Hero's Name</label>
+                <input type="text" id="name" name="name">
+            <label for="age">Hero's Age</label>
+                <input type="text" id="age" name="age">
+            <label for ="power">Hero's Powers</label>
+                <input type="text" id="power" name="power">
+            <label for="weakness">Weakness</label>
+                <input type="text" id="weakness" name="weakness">
+    {{/if}}
+    <button class="btn btn-default" type="submit">View</button>
+        </form>
+        </form>
+
+{{/partial}}
+
+{{>layout.hbs}}
