@@ -91,6 +91,7 @@ public class App {
             int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
             heroDao.update(idOfTheHeroToEdit,newName,newName,newWeakness);
             response.redirect("/");
-        });
+            return null;
+        },new HandlebarsTemplateEngine());
     }
 }
