@@ -25,7 +25,7 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-        //get: delete an individual list
+        //get: delete an individual hero
         get("/heros/:id/delete" ,(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             int idOfHeroToDelete = Integer.parseInt(request.params("id"));

@@ -1,7 +1,7 @@
 {{#partial "content"}}
     {{#if editHero}}
         <h1>Edit Hero characteristics</h1>
-        <form action="/heros/{{editHero.id}}" method="post">
+        <form action="/heros/{{editHero.id}}/update" method="post">
             <label for ="name"></label>
                 <input id ="name" name="name" type="text">
             <label for ="age">Hero Age</label>
@@ -13,7 +13,7 @@
     {{else}}
         <h1>Add a new Hero</h1>
 
-        <form action ="/heros" method="post">
+        <form action ="/heros/new" method="post">
             <label for="name">Hero's Name</label>
                 <input type="text" id="name" name="name">
             <label for="age">Hero's Age</label>
@@ -24,7 +24,7 @@
                 <input type="text" id="weakness" name="weakness">
     {{/if}}
     <button class="btn btn-default" type="submit">View</button>
-        </form>
+
         </form>
 
 {{/partial}}
