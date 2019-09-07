@@ -43,5 +43,25 @@ public class App {
 
         }, new HandlebarsTemplateEngine());
 
+        //get to show new hero form
+        get("/heros/new",(request, response) -> {
+            Map<String,Object> model = new HashMap<>();
+            return new ModelAndView(model,"hero-form.hbs");
+
+        },new HandlebarsTemplateEngine());
+
+        //task: process new hero form
+        post ("/heros",(request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            String name =request.queryParams("name");
+//            Integer age = request.queryParams(100);
+            String power= request.queryParams("power");
+            String weakness = request.queryParams("weakness");
+            Hero newIdentity =new Hero(name,power,weakness);
+            heroDao.add(newIdentity);
+            response.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
     }
 }

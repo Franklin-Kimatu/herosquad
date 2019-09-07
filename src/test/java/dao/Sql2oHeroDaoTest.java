@@ -27,7 +27,7 @@ public class Sql2oHeroDaoTest {
 
     @Test
    public void addingThisWillSetId() throws Exception {
-        Hero hero= new Hero("superman",100,"height","light");
+        Hero hero= new Hero("superman","height","light");
         int initialHeroId = hero.getId();
         heroDao.add(hero);
         assertNotEquals(initialHeroId,hero.getId());
@@ -35,7 +35,7 @@ public class Sql2oHeroDaoTest {
 
     @Test
    public void existingHerosCanBeFoundById() throws Exception{
-       Hero hero = new Hero("superman",100,"height","light");
+       Hero hero = new Hero("superman","height","light");
        heroDao.add(hero);
         Hero foundHero =heroDao.findById(hero.getId());
         assertEquals(hero,foundHero);
@@ -44,7 +44,7 @@ public class Sql2oHeroDaoTest {
 
     @Test
   public void allTasksAreFoundAndReturned() throws Exception{
-        Hero hero = new Hero("superman",100,"height","light");
+        Hero hero = new Hero("superman","height","light");
         heroDao.add(hero);
         assertEquals(1,heroDao.getAll().size());
     }

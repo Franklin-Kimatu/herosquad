@@ -18,11 +18,7 @@ public class HeroTest {
         assertEquals("superman",hero.getName());
     }
     //test age
-    @Test
-    public void getAgeInstantiatesTheHeroAge(){
-        Hero hero = setUpNewHero();
-        assertEquals(100,hero.getAge());
-    }
+
 
     //tests power
     @Test
@@ -38,7 +34,7 @@ public class HeroTest {
         assertEquals("light",hero.getWeakness());
     }
     private Hero setUpNewHero() {
-        return new Hero("superman",100,"height","light");
+        return new Hero("superman","height","light");
     }
 
 
