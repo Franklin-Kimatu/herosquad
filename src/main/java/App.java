@@ -25,6 +25,23 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-        //get:
+        //get: delete an individual list
+        get("/heros/:id/delete" ,(request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            int idOfHeroToDelete = Integer.parseInt(request.params("id"));
+            heroDao.deleteById(idOfHeroToDelete);
+            response.redirect("/");
+            return null;
+        },new HandlebarsTemplateEngine());
+
+        //get to show all heros
+        get("/",(request, response) -> {
+            Map<String,Object> model = new HashMap<>();
+            List<Hero> heros = heroDao.getAll();
+            model.put("heros",heros);
+            return new ModelAndView(model,"index.hbs");
+
+        }, new HandlebarsTemplateEngine());
+
     }
 }
