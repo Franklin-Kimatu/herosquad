@@ -89,7 +89,7 @@ public class App {
             String newPower = request.queryParams("power");
             String newWeakness = request.queryParams("weakness");
             int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
-            heroDao.update(idOfTheHeroToEdit,newName,newName,newWeakness);
+            heroDao.update(idOfTheHeroToEdit,newName,newPower,newWeakness);
             response.redirect("/");
             return null;
         },new HandlebarsTemplateEngine());

@@ -46,7 +46,7 @@ public class Sql2oHeroDao implements HeroDao {
     }
 
     @Override
-    public void update(int id, String newName, int newAge, String newPower, String newWeakness) {
+    public void update(int id, String newName,  String newPower, String newWeakness) {
         String sql = "UPDATE heros SET name =:name WHERE id =:id";
         String sql1 = "UPDATE heros SET age =:age WHERE id =:id";
         String sql2 = "UPDATE heros SET power =:power WHERE id =:id";
@@ -54,7 +54,7 @@ public class Sql2oHeroDao implements HeroDao {
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("name", newName)
-                    .addParameter("age", newAge)
+
                     .addParameter("power", newPower)
                     .addParameter("weakness", newWeakness)
                     .addParameter("id", id)
