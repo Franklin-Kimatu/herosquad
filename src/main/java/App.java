@@ -54,7 +54,7 @@ public class App {
         post ("/heros",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             String name =request.queryParams("name");
-//            Integer age = request.queryParams(100);
+//
             String power= request.queryParams("power");
             String weakness = request.queryParams("weakness");
             Hero newIdentity =new Hero(name,power,weakness);
@@ -63,5 +63,34 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
+        //show an individual form
+        get("/heros/:id",(request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            int idOfHeroToFind = Integer.parseInt(request.params("id"));
+            Hero foundHero= heroDao.findById(idOfHeroToFind);
+            model.put("hero",foundHero);
+            return new ModelAndView(model,"hero-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //get show a form to update hero
+        get("/heros/:id/update",(request, response) -> {
+            Map <String,Object>model = new HashMap<>();
+            int idOfTaskToEdit =Integer.parseInt(request.params("id"));
+            Hero editHero = heroDao.findById(idOfTaskToEdit);
+            model.put("editHero",editHero);
+            return new ModelAndView(model,"hero-form.hbs");
+
+        },new HandlebarsTemplateEngine());
+
+        //task:process a form to update a hero
+        post("heros/:id",(request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            String newName = request.queryParams("name");
+            String newPower = request.queryParams("power");
+            String newWeakness = request.queryParams("weakness");
+            int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
+            heroDao.update(idOfTheHeroToEdit,newName,newName,newWeakness);
+            response.redirect("/");
+        });
     }
 }
