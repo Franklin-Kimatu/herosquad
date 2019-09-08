@@ -1,10 +1,11 @@
-import dao.Sql2oHeroDao;
+
 import models.Hero;
 import org.sql2o.Sql2o;
 import spark.Spark;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,12 +30,11 @@ public class App {
         post ("/heros/new",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             String name =request.queryParams("name");
-            String age = (request.queryParams("age"));
+            int age = Integer.parseInt(request.queryParams("100"));
             String power= request.queryParams("power");
             String weakness = request.queryParams("weakness");
             Hero newIdentity =new Hero(name,age,power,weakness);
-            Hero.add(newIdentity);
-
+            model.put("hero",newIdentity);
             return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -42,7 +42,7 @@ public class App {
         //get to show all heros
         get("/",(request, response) -> {
             Map<String,Object> model = new HashMap<>();
-            List<Hero> heros = Hero.getAll();
+            ArrayList<Hero> heros = Hero.getAll();
             model.put("heros",heros);
             return new ModelAndView(model,"index.hbs");
 
@@ -71,10 +71,12 @@ public class App {
         post("heros/:id/update",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             String newName = request.queryParams("name");
+            int newAge =Integer.parseInt(request.queryParams("100"));
             String newPower = request.queryParams("power");
             String newWeakness = request.queryParams("weakness");
             int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
-            Hero.update(idOfTheHeroToEdit,newName,newPower,newWeakness);
+            Hero editHero = Hero.findById(idOfTheHeroToEdit);
+            editHero.update(newName,newAge,newPower,newWeakness);
 
             return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
@@ -91,9 +93,10 @@ public class App {
         get("/heros/:id/delete" ,(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             int idOfHeroToDelete = Integer.parseInt(request.params("id"));
-            Hero.deleteById(idOfHeroToDelete);
-            response.redirect("/");
-            return null;
+            Hero deleteHero = Hero.findById(idOfHeroToDelete);
+            deleteHero.deleteById(idOfHeroToDelete);
+
+            return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
 
 

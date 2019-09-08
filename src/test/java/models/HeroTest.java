@@ -34,7 +34,7 @@ public class HeroTest {
         assertEquals("light",hero.getWeakness());
     }
     private Hero setUpNewHero() {
-        return new Hero("superman","","height","light");
+        return new Hero("superman",100,"height","light");
     }
 
 

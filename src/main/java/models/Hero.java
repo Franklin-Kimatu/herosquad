@@ -50,9 +50,26 @@ public class Hero {
         return instances;
     }
 
+    public static void clearAllHeros(){
+        instances.clear();
+    }
 
     public void setId( int id){
         this.id = id;
+    }
+
+    public static Hero findById(int id){
+        return instances.get(id-1);
+    }
+
+    public void update(String name, int age,String power,String weakness){
+        this.name =name;
+        this.age=age;
+        this.power= power;
+        this.weakness=weakness;
+    }
+    public void deleteById(int id){
+        instances.remove(id-1);
     }
 
 
