@@ -21,16 +21,16 @@ public class Hero {
     }
 
     private String name;
-    private int age;
+    private String age;
     private String power;
     private String weakness;
     private int id;
 
 
-    public Hero(String name,String power, String weakness){
+    public Hero(String name, String age, String power, String weakness){
 
         this.name=name;
-
+        this.age =age;
         this.power=power;
         this.weakness=weakness;
     }

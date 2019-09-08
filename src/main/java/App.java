@@ -29,10 +29,10 @@ public class App {
         post ("/heros/new",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             String name =request.queryParams("name");
-
+            String age = (request.queryParams("age"));
             String power= request.queryParams("power");
             String weakness = request.queryParams("weakness");
-            Hero newIdentity =new Hero(name,power,weakness);
+            Hero newIdentity =new Hero(name,age,power,weakness);
             heroDao.add(newIdentity);
 
             return new ModelAndView(model,"success.hbs");
