@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Hero {
@@ -21,22 +22,34 @@ public class Hero {
     }
 
     private String name;
-    private String age;
+    private int age;
     private String power;
     private String weakness;
     private int id;
+    private static ArrayList<Hero> instances = new ArrayList<>();
 
 
-    public Hero(String name, String age, String power, String weakness){
+    public Hero(String name, int age, String power, String weakness){
 
         this.name=name;
         this.age =age;
         this.power=power;
         this.weakness=weakness;
+        instances.add(this);
+
     }
     public String getName(){
         return name;
     }
+
+    public int getAge(){
+        return age;
+    }
+
+    public static ArrayList<Hero>getAll(){
+        return instances;
+    }
+
 
     public void setId( int id){
         this.id = id;

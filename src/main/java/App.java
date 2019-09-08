@@ -13,9 +13,9 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
-        String connectionString = "jdbc:h2:~/herosquad.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
-        Sql2oHeroDao heroDao = new Sql2oHeroDao(sql2o);
+//        String connectionString = "jdbc:h2:~/herosquad.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+//        Sql2o sql2o = new Sql2o(connectionString, "", "");
+//        Sql2oHeroDao heroDao = new Sql2oHeroDao(sql2o);
 
         //get to show new hero form
         get("/heros/new",(request, response) -> {
@@ -33,7 +33,7 @@ public class App {
             String power= request.queryParams("power");
             String weakness = request.queryParams("weakness");
             Hero newIdentity =new Hero(name,age,power,weakness);
-            heroDao.add(newIdentity);
+            Hero.add(newIdentity);
 
             return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
@@ -42,7 +42,7 @@ public class App {
         //get to show all heros
         get("/",(request, response) -> {
             Map<String,Object> model = new HashMap<>();
-            List<Hero> heros = heroDao.getAll();
+            List<Hero> heros = Hero.getAll();
             model.put("heros",heros);
             return new ModelAndView(model,"index.hbs");
 
@@ -52,7 +52,7 @@ public class App {
         get("/heros/:id",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             int idOfHeroToFind = Integer.parseInt(request.params("id"));
-            Hero foundHero= heroDao.findById(idOfHeroToFind);
+            Hero foundHero= Hero.findById(idOfHeroToFind);
             model.put("hero",foundHero);
             return new ModelAndView(model,"hero-detail.hbs");
         }, new HandlebarsTemplateEngine());
@@ -61,7 +61,7 @@ public class App {
         get("/heros/:id/update",(request, response) -> {
             Map <String,Object>model = new HashMap<>();
             int idOfTaskToEdit =Integer.parseInt(request.params("id"));
-            Hero editHero = heroDao.findById(idOfTaskToEdit);
+            Hero editHero = Hero.findById(idOfTaskToEdit);
             model.put("editHero",editHero);
             return new ModelAndView(model,"hero-form.hbs");
 
@@ -74,7 +74,7 @@ public class App {
             String newPower = request.queryParams("power");
             String newWeakness = request.queryParams("weakness");
             int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
-            heroDao.update(idOfTheHeroToEdit,newName,newPower,newWeakness);
+            Hero.update(idOfTheHeroToEdit,newName,newPower,newWeakness);
 
             return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
@@ -82,7 +82,7 @@ public class App {
         //get : delete all heros
         get ("/heros/delete",(request, response) -> {
             Map<String,Object> model= new HashMap<>();
-            heroDao.clearAllHeros();
+            Hero.clearAllHeros();
             response.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
@@ -91,7 +91,7 @@ public class App {
         get("/heros/:id/delete" ,(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             int idOfHeroToDelete = Integer.parseInt(request.params("id"));
-            heroDao.deleteById(idOfHeroToDelete);
+            Hero.deleteById(idOfHeroToDelete);
             response.redirect("/");
             return null;
         },new HandlebarsTemplateEngine());
