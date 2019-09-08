@@ -1,0 +1,19 @@
+{{#partial "content"}}
+    <h1>Your Squad</h1>
+    <p>Add a new Squad</p>
+    <form action="" method="post">
+
+        <label for="squadName">Squad Name</label>
+            <input id="squadName" type="text" name ="squadName">
+
+        <label for="squadNumber">Maximun Squad Size</label>
+            <input id="squadNumber" type="text" name="squadNumber">
+
+        <label for="cause">Cause of Squad</label>
+            <input id="squadCause" type="text" name="squadCause">
+
+        <button type="submit" class="btn btn-default">Add Squad</button>
+    </form>
+
+{{/partial}}
+{{>layout.hbs}}

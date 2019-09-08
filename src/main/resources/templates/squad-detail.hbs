@@ -1,0 +1,19 @@
+{{#partial "content"}}
+    <h1>Squads</h1>
+
+    {{#if squads}}
+        {{#each squads}}
+            <div class="list">
+                <ul>
+                    <li>
+                        <p>Squad Name: <span>{{squadName}}</span></p>
+                        <p>Squad Size :{{squadNumber}}</p>
+                        <p>Cause:{{squadCause}}</p>
+                    </li>
+                </ul>
+            </div>
+        {{/each}}
+    {{else}}
+        <p>No Squads  added Yet.</p>
+    {{/if}}
+{{/partial}}
