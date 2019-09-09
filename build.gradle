@@ -4,11 +4,12 @@ plugins {
 }
 
 
-
+archivesBaseName = "herosquad"
 group 'com.moringa.studenttacker'
 version '1.0-SNAPSHOT'
 applicationName ="herosquad"
 mainClassName ="App"
+
 
 sourceCompatibility = 1.8
 
@@ -24,3 +25,4 @@ dependencies {
     compile 'org.sql2o:sql2o:1.5.4'
     compile group: 'com.h2database', name: 'h2', version: '1.4.191'
 }
+task stage(dependsOn: ['clean', 'installDist'])
