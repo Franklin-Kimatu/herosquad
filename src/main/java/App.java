@@ -63,7 +63,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //show an individual hero
-        get("heros/:id",(request, response) -> {
+        get("/heros/:id",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             int idOfHeroToFind = Integer.parseInt(request.params(":id"));
             Hero foundHero= Hero.findById(idOfHeroToFind);
@@ -83,7 +83,7 @@ public class App {
         },new HandlebarsTemplateEngine());
 
         //task:process a form to update a hero
-        post("heros/:id/update",(request, response) -> {
+        post("/heros/:id/update",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             String newName = request.queryParams("name");
             int newAge =Integer.parseInt(request.queryParams("age"));
