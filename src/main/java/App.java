@@ -99,6 +99,12 @@ public class App {
             return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
 
+        //get to show new hero form
+        get("/squads/new",(request, response) -> {
+            Map<String,Object> model = new HashMap<>();
+            return new ModelAndView(model,"squad-form.hbs");
+
+        },new HandlebarsTemplateEngine());
 
 
 
