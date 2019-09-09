@@ -30,7 +30,7 @@ public class App {
         post ("/heros/new",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             String name =request.queryParams("name");
-            int age = Integer.parseInt(request.queryParams("100"));
+            int age = Integer.parseInt(request.queryParams("age"));
             String power= request.queryParams("power");
             String weakness = request.queryParams("weakness");
             Hero newIdentity =new Hero(name,age,power,weakness);

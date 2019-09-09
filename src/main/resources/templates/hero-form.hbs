@@ -1,27 +1,27 @@
 {{#partial "content"}}
     {{#if editHero}}
         <h1>Edit Hero characteristics</h1>
-        <form action="/heros/{{editHero.id}}/update" method="post">
+        <form action="/heros/{{editHero.id}}/update" method="post" class="form-group">
             <label for ="name"></label>
-                <input id ="name" name="name" type="text">
+                <input id ="name" name="name" type="text" class="form-control">
             <label for ="age">Hero Age</label>
-                <input id="age" name="age" type="text">
+                <input id="age" name="age" type="text" class="form-control">
             <label for="power">Hero's powers</label>
-                <input type="text" name="power" id="power">
+                <input type="text" name="power" id="power" class="form-control">
             <label for ="weakness">Heros Weakness</label>
-                <input type="text" id="weakness" name="weakness">
+                <input type="text" id="weakness" name="weakness" class="form-control">
     {{else}}
         <h1>Add a new Hero</h1>
 
-        <form action ="/heros/new" method="post">
+        <form action ="/heros/new" method="post" class="form-group">
             <label for="name">Hero's Name</label>
-                <input type="text" id="name" name="name">
+                <input type="text" id="name" name="name" class="form-control">
             <label for="age">Hero's Age</label>
-                <input type="text" id="age" name="age">
+                <input type="text" id="age" name="age" class="form-control">
             <label for ="power">Hero's Powers</label>
-                <input type="text" id="power" name="power">
+                <input type="text" id="power" name="power" class="form-control">
             <label for="weakness">Weakness</label>
-                <input type="text" id="weakness" name="weakness">
+                <input type="text" id="weakness" name="weakness" class="form-control">
     {{/if}}
     <button class="btn btn-default" type="submit">Go!</button>
 
