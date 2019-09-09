@@ -1,5 +1,5 @@
 body{
-background-image:url("https://images7.alphacoders.com/353/thumb-1920-353899.jpg");
+background-image:url("https://s3.scoopwhoop.com/anj/sw/b19d36cb-fdd4-4c40-a9b7-4190cb02c92b.jpg");
 
 color: red;
 }
@@ -9,13 +9,12 @@ margin-top:3%;
 width:60%;
 }
 .color{
-background-color:rgba(0,0,0,0.8);
+background-color:rgba(0,0,0,0.6);
 position:absolute;
 z-index:2;
 top:0;
 width:100%;
 height:100%
 }
-.color ul li{
-color:red;
-}
+.nav{
+color:red;}

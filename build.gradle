@@ -3,8 +3,11 @@ plugins {
     id 'application'
 }
 
+
+
 group 'com.moringa.studenttacker'
 version '1.0-SNAPSHOT'
+applicationName ="herosquad"
 mainClassName ="App"
 
 sourceCompatibility = 1.8
