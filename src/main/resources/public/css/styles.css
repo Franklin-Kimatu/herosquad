@@ -4,12 +4,12 @@ background-image:url("https://s3.scoopwhoop.com/anj/sw/b19d36cb-fdd4-4c40-a9b7-4
 color: rgb(250,0,0);
 }
 .container{
-background-color:rgba(0,0,0,0.8);
+background-color:rgba(0,0,0,0.5);
 margin-top:3%;
 width:60%;
 }
 .color{
-background-color:rgba(0,0,0,0.3);
+
 position:absolute;
 z-index:2;
 top:0;
@@ -21,9 +21,11 @@ border-radius:2px;
 .nav{
 color:red;}
 .card{
+color:black;
 border:1px hidden;
 border-radius:5px;
 box-sizing:border-box;
 box-shadow: 1px 3px 2px 3px grey;
 padding:10px;
+background-color:white;
 }

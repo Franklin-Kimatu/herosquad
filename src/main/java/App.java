@@ -1,13 +1,12 @@
 
 import models.Hero;
 import models.Squad;
-import org.sql2o.Sql2o;
-import spark.Spark;
+
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.ArrayList;
-import java.util.List;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,8 +16,7 @@ public class App {
         ProcessBuilder process = new ProcessBuilder();
         Integer port;
 
-        // This tells our app that if Heroku sets a port for us, we need to use that port.
-        // Otherwise, if they do not, continue using port 4567.
+
 
         if (process.environment().get("PORT") != null) {
             port = Integer.parseInt(process.environment().get("PORT"));
@@ -75,8 +73,8 @@ public class App {
         get("/heros/:id/update",(request, response) -> {
             Map <String,Object>model = new HashMap<>();
 
-            int idOfTaskToEdit =Integer.parseInt(request.params("id"));
-            Hero editHero = Hero.findById(idOfTaskToEdit);
+            int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
+            Hero editHero = Hero.findById(idOfTheHeroToEdit);
             model.put("editHero",editHero);
             return new ModelAndView(model,"hero-form.hbs");
 
@@ -96,13 +94,7 @@ public class App {
             return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
 
-        //get : delete all heros
-        get ("/heros/delete",(request, response) -> {
-            Map<String,Object> model= new HashMap<>();
-            Hero.clearAllHeros();
-            response.redirect("/");
-            return null;
-        }, new HandlebarsTemplateEngine());
+
 
         //get: delete an individual hero
         get("/heros/:id/delete" ,(request, response) -> {
@@ -135,9 +127,6 @@ public class App {
             return new ModelAndView(model,"success2.hbs");
         }, new HandlebarsTemplateEngine());
 
-//        get("squad-list",(request, response) -> {
-//
-//        })
 
         get("/",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
