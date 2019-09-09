@@ -3,9 +3,19 @@
 
     {{#if heros}}
         {{#each heros}}
-            <p>Your Hero:</p>
-            <p>{{name}}</p>
-            <p>{{age}}</p><a href="/heros/{{id}}"><button>view details</button></a>
+
+            <div class="card" style="width: 25rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Hero {{name}}</h5>
+
+                    <p></p>
+                    <p>Age: {{age}}</p>
+                    <p>Powers: {{power}}</p>
+                    <p>Weaknesses: {{weakness}}</p>
+                    <a href="/heros/{{hero.id}}/update"><button class="btn btn-success">Edit hero's Content</button></a>
+                    <a href="/heros/{{hero.id}}/delete"><button class="btn btn-danger">Delete this hero</button></a>
+                </div>
+            </div>
         {{/each}}
         {{else}}
         <p>No hero has been added.</p>

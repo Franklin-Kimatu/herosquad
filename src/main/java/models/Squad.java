@@ -32,6 +32,7 @@ public class Squad {
             this.squadName=squadName;
             this.cause=cause;
             this.maxNum=maxNum;
+            instances.add(this);
         }
 
         public String getSquadName(){
@@ -45,6 +46,9 @@ public class Squad {
         public int getMaxNum(){
             return maxNum;
         }
+    public static ArrayList<Squad>getAll(){
+        return instances;
+    }
 
 
 
