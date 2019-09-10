@@ -8,7 +8,7 @@
 * A user can name a squad of heros according to his preference. The name is stored for the session the user is in the session.
 
 ##Setup and Installation.
-* Follow the link below to select your Hero.
+* Follow the link below to select your Hero. https://herosquad-franklin2.herokuapp.com/
 
 ## Technologies used.
 * Java.
