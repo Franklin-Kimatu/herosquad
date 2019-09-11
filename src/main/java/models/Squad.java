@@ -25,14 +25,14 @@ public class Squad {
     private String cause;
 
     private int id;
-    private static ArrayList<Squad> instances = new ArrayList<>();
+    private static ArrayList<Squad> squads = new ArrayList<>();
 
 
         public Squad(String squadName ,int maxNum,String cause){
             this.squadName=squadName;
             this.cause=cause;
             this.maxNum=maxNum;
-            instances.add(this);
+            squads.add(this);
         }
 
         public String getSquadName(){
@@ -47,7 +47,7 @@ public class Squad {
             return maxNum;
         }
     public static ArrayList<Squad>getAll(){
-        return instances;
+        return squads;
     }
 
 

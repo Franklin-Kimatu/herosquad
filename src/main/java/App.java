@@ -55,7 +55,7 @@ public class App {
             ArrayList<Hero> heros = Hero.getAll();
             ArrayList<Squad>squads =Squad.getAll();
             model.put("heros",heros);
-            model.put("squads",squads);
+//            model.put("squads",squads);
             return new ModelAndView(model,"index.hbs");
 
         }, new HandlebarsTemplateEngine());
@@ -108,7 +108,7 @@ public class App {
 
         //squad
 
-        //get to show new hero form
+        //get to show new squad form
         get("/squads/list",(request, response) -> {
             Map<String,Object> model = new HashMap<>();
             return new ModelAndView(model,"squad-form.hbs");
@@ -128,11 +128,11 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-        get("/",(request, response) -> {
+        get("/squads/list",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<Squad> squads = Squad.getAll();
             model.put("squads", squads);
-            return new ModelAndView(model, "index.hbs");
+            return new ModelAndView(model, "squad-list.hbs");
 
         },new HandlebarsTemplateEngine());
 
